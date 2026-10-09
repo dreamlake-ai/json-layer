@@ -9,18 +9,45 @@
   "types": "./dist/esm/index.d.ts",
   "exports": {
     ".": {
-      "import": { "types": "./dist/esm/index.d.ts", "default": "./dist/esm/index.js" },
-      "require": { "types": "./dist/cjs/index.d.cts", "default": "./dist/cjs/index.cjs" }
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
     }
   },
-  "bin": { "json-layer": "./dist/esm/cli.js" },
-  "files": ["dist", "README.md", "LICENSE"],
+  "bin": {
+    "json-layer": "dist/esm/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "sideEffects": false,
-  "engines": { "node": ">=18" },
-  "repository": { "type": "git", "url": "git+https://github.com/dreamlake-ai/json-layer.git" },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreamlake-ai/json-layer.git"
+  },
   "homepage": "https://github.com/dreamlake-ai/json-layer#readme",
-  "keywords": ["json", "jsonl", "layers", "overlay", "patch", "merge", "configuration"],
-  "publishConfig": { "access": "public" },
+  "keywords": [
+    "json",
+    "jsonl",
+    "layers",
+    "overlay",
+    "patch",
+    "merge",
+    "configuration"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/cjs.mjs",
     "test": "vitest run",
