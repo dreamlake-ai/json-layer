@@ -1,26 +1,19 @@
 {
   "name": "@dreamlake/json-layer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Layered JSON configuration: JSON Lines of static overwrites and operators, resolved in order, with the source line of every value.",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.cts",
-        "default": "./dist/cjs/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "bin": {
-    "json-layer": "dist/esm/cli.js"
+    "json-layer": "dist/cli.js"
   },
   "files": [
     "dist",
@@ -29,7 +22,7 @@
   ],
   "sideEffects": false,
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19"
   },
   "repository": {
     "type": "git",
@@ -49,9 +42,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/cjs.mjs",
-    "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc",
+    "test": "tsc --noEmit && vitest run",
     "prepublishOnly": "npm run build && npm test"
   },
   "devDependencies": {
