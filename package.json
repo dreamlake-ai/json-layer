@@ -1,0 +1,35 @@
+{
+  "name": "@dreamlake/json-layer",
+  "version": "0.1.0",
+  "description": "Layered JSON configuration: JSON Lines of static overwrites and operators, resolved in order, with the source line of every value.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/esm/index.d.ts", "default": "./dist/esm/index.js" },
+      "require": { "types": "./dist/cjs/index.d.cts", "default": "./dist/cjs/index.cjs" }
+    }
+  },
+  "bin": { "json-layer": "./dist/esm/cli.js" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "git+https://github.com/dreamlake-ai/json-layer.git" },
+  "homepage": "https://github.com/dreamlake-ai/json-layer#readme",
+  "keywords": ["json", "jsonl", "layers", "overlay", "patch", "merge", "configuration"],
+  "publishConfig": { "access": "public" },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/cjs.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.3",
+    "vitest": "^3.2.4"
+  }
+}
